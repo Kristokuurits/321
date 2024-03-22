@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h1 class="font-bold">Muuda sündmust</h1>
+        <h1 class="font-bold">Muuda sÃ¼ndmust</h1>
 
         <div class="min-h-full flex items-center justify-center py-0 px- sm:px-6 lg:px-8">
             <form class="max-w-md w-full space-y-9">
                 <div class="mt-5 space-y-6">
                     <div class="rounded-md shadow-sm -space-y-px">
                         <div>
-                            <label for="name">Sündmuse tüüp</label>
+                            <label for="name">SÃ¼ndmuse tÃ¼Ã¼p</label>
                             <input id="name"
                                    name="name"
                                    v-model="event.type"
@@ -34,13 +34,13 @@
                         </div>
                         <br />
                         <div>
-                            <label for="date">Kuupäev</label>
+                            <label for="date">KuupÃ¤ev</label>
                             <input id="date"
                                    name="date"
                                    v-model="event.date"
                                    type="date"
                                    class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                   placeholder="Kuupäev" />
+                                   placeholder="KuupÃ¤ev" />
                         </div>
                         <br />
                         <div>
@@ -103,7 +103,7 @@
     }
 
     // Navigate to the events page after submitting
-    router.push({ name: "Treeneri Sündmused" });
+    router.push({ name: "Treeneri SÃ¼ndmused" });
   };
 </script>
 

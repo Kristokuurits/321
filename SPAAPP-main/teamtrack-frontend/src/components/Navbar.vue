@@ -1,10 +1,10 @@
 <template>
     <div>
         <a href="/">Koduleht</a>
-        <a href="/coachEvents">Olen Treener</a>
-        <a href="/athleteEvents">Olen Sportlane</a>
-        <a href="/newevent">Lisa sündmus</a>
-        <a href="/eventPeople">Isikute Sündmused</a>
+        <a href="/coachEvents">Treener</a>
+        <a href="/athleteEvents">Sportlane</a>
+        <a href="/newevent">Lisa SÃ¼ndmus</a>
+        <a href="/eventPeople">Inimeste SÃ¼ndmused</a>
         <a href="/peopleStore">Inimesed</a>
 
 
@@ -20,28 +20,24 @@
 <style scoped>
     a {
         list-style-type: none;
-        margin: 0 auto; /* Keskendab nav-bari lehe keskele */
+        margin: 0 auto;
         padding: 0;
         width: 319px;
-        background-color: black;
-        padding: 20px 0; /* Lisa ruumi ülal ja all */
+        background-color: rgb(100, 100, 100);
+        padding: 20px 0;
     }
 
     a {
         float: left;
         display: block;
-        color: white;
+        color: rgb(255, 255, 255);
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        border: 2px solid white;
+        border: 2px solid rgb(100, 100, 100);
         border-radius: 5px;
-        transition: transform 0.3s; /* Üleminekumuudatus, et suurendada nuppu suurust sujuvalt */
+        transition: transform 0.3s;
     }
-
-        a:hover {
-            transform: scale(1.04); /* Suurendab nuppu 5% võrra, kui kasutaja selle peale hiirega liigub */
-        }
 </style>
 
 

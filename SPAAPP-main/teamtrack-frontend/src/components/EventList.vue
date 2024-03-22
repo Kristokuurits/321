@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-grey-50 py-12 px-4 sm:px-6 lg:px=8 text-black-300">
+    <div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 text-black">
         <div class="text-center">
             <h1 class="font-bold">{{ title }}</h1>
             <DataTable :value="events" v-if="events.length > 0">
@@ -9,20 +9,9 @@
                 <Column field="time" header="Kellaaeg" />
                 <Column v-if="!isAthlete">
                     <template #body="{ data }">
-                        <router-link class="border bg-blue-400 text-blue-900 py-0 px-2 mx-2 border-red-900 font-bold"
-                                     :to="'update/' + data.id">
-                            ⭮
-                        </router-link>
-
-                        <button class="border bg-red-400 text-white py-0 px-2 border-red-900 font-bold"
-                                @click="remove(data)">
-                            Delete
-                        </button>
-
-                        <button class="border bg-green-400 text-white py-0 px-2 border-green-900 font-bold"
-                                @click="showDetails(data)">
-                            Details
-                        </button>
+                        <router-link class="btn btn-blue" :to="'update/' + data.id">⭮</router-link>
+                        <button class="btn btn-red" @click="remove(data)">Delete</button>
+                        <button class="btn btn-green" @click="showDetails(data)">Details</button>
                     </template>
                 </Column>
             </DataTable>
@@ -36,7 +25,7 @@
                         {{ key }}: {{ value }}
                     </li>
                 </ul>
-                <button @click="showPopup = false" class="popupClose">X</button>
+                <button @click="showPopup = false" class="popup-close">X</button>
             </div>
         </div>
     </div>
@@ -49,17 +38,15 @@
     import { defineProps, onMounted, ref, watch } from "vue";
     import { useRoute } from "vue-router";
 
-
     const route = useRoute();
 
     watch(route, (to, from) => {
-        // Check if the route has changed meaningfully before calling load.
         if (to.path !== from.path || to.query !== from.query) {
             eventsStore.load();
         }
     }, { deep: true });
 
-    defineProps<{ title: String, isAthlete: Boolean }>();
+    defineProps<{ title: string, isAthlete: boolean }>();
 
     const showPopup = ref(false);
     const selectedEvent = ref({});
@@ -79,134 +66,135 @@
     const remove = (event: Event) => {
         eventsStore.deleteEvent(event);
     };
-
 </script>
 
-<style>
+<style scoped>
     /* General styles */
     .min-h-screen {
-        background-color: #f8fafc; /* A softer shade of grey */
-        color: #111827; /* Dark grey for better readability */
+        background-color: #888888;
+        color: #111827;
     }
 
-    /* Typography and spacing */
     h1 {
-        padding: 1rem 0; /* More vertical padding */
-        font-size: 2.25rem; /* Larger size for title */
+        padding: 1rem 0;
+        font-size: 2.25rem;
         line-height: 2.5rem;
-        margin-bottom: 2rem; /* Space below the title */
-        color: black      
+        margin-bottom: 2rem;
+        color: rgb(0, 0, 0);
     }
 
     /* Buttons and links */
-    button, .router-link {
-        padding: 0.5rem 1rem; /* Increased padding for larger clickable area */
-        margin: 0 0.25rem; /* Slight separation between buttons */
-        border: none; /* Remove default borders */
-        font-weight: 600; /* Semi-bold font for better legibility */
-        transition: background-color 0.3s; /* Smooth background transition for hover effect */
+    .btn {
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+        border: none;
+        font-weight: 600;
+        transition: background-color 0.3s;
     }
 
-        button:hover, .router-link:hover {
-            background-color: darken(bg-color, 10%); /* Darken button on hover for feedback */
-        }
+    .btn-blue {
+        background-color: #4a96b9;
+        color: #fff;
+    }
 
+    .btn-red {
+        background-color: #ca6969;
+        color: #fff;
+    }
+
+    .btn-green {
+        background-color: #4dbb96;
+        color: #fff;
+    }
+
+    .btn:hover {
+        filter: brightness(0.9);
+    }
+
+    /* Popup styles */
     .popup {
-        /* ... existing styles ... */
-        display: flex; /* Keep this to align the popup */
+        display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.3s ease-in-out; /* Smooth fade transition */
-        z-index: 100; /* High z-index to ensure visibility above other content */
+        transition: opacity 0.3s ease-in-out;
+        z-index: 100;
     }
 
     .popup-inner {
-        background-color: #fff; /* White background for the popup */
-        padding: 40px; /* More padding for a spacious look */
-        border-radius: 15px; /* Rounded corners */
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Softer shadow for depth */
-        position: relative; /* For absolute positioning of close button */
-        width: 90%; /* Max width to support responsiveness */
-        max-width: 500px; /* Maximum width of the popup */
-        transition: transform 0.3s ease-in-out; /* Transform transition for a pop effect */
-        transform: scale(1.05); /* Start slightly larger */
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        position: relative;
+        width: 90%;
+        max-width: 500px;
+        transition: transform 0.3s ease-in-out;
+        transform: scale(1.05);
     }
 
-        .popup-inner h2 {
-            margin-top: 0; /* Remove margin at the top of the h2 */
-            margin-bottom: 1rem; /* Space below the title */
-            color: #333; /* Dark color for the title */
-            font-size: 1.75rem; /* Larger size for the title */
-        }
+    .popup-inner h2 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: rgb(156, 156, 156);
+        font-size: 1.75rem;
+    }
 
-        .popup-inner ul {
-            list-style: none; /* Remove list styles */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margins for a clean look */
-        }
+    .popup-inner ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-            .popup-inner ul li {
-                padding: 0.5rem 0; /* Padding for each list item */
-                border-bottom: 1px solid #eee; /* Separator for items */
-            }
+    .popup-inner ul li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
 
-                .popup-inner ul li:last-child {
-                    border-bottom: none; /* No border for the last item */
-                }
+    .popup-inner ul li:last-child {
+        border-bottom: none;
+    }
 
-    .popupClose {
+    .popup-close {
         position: absolute;
         top: 10px;
         right: 10px;
-        width: 30px; /* Width and height should be the same for a circle */
+        width: 30px;
         height: 30px;
-        line-height: 30px; /* Line height equal to height to center the text vertically */
-        text-align: center; /* Center the text horizontally */
-        border-radius: 50%; /* Perfect circle */
-        font-size: 16px; /* Adjust the font size as needed */
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 16px;
         transition: background-color 0.2s, transform 0.2s;
         cursor: pointer;
-        display: flex; /* Use flexbox to center content */
-        align-items: center; /* Center vertically */
-        justify-content: center; /* Center horizontally */
-        padding: 0; /* Remove padding to prevent misalignment */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
     }
 
-        .popupClose:hover,
-        .popupClose:focus {
-            background-color: #e11d48; /* Darker shade for hover effect */
-            color: #fff;
-            outline: none; /* Remove outline on focus for a cleaner look */
-        }
-
-    /* Showing and hiding the popup */
-    .popup-enter-active, .popup-leave-active {
-        transition: opacity 0.3s ease-in-out;
-    }
-
-    .popup-enter, .popup-leave-to /* .popup-leave-active below version 2.1.8 */ {
-        opacity: 0;
-        transform: scale(1);
+    .popup-close:hover,
+    .popup-close:focus {
+        background-color: #e11d48;
+        color: #fff;
+        outline: none;
     }
 
     /* DataTable styling */
     .DataTable {
-        /* Assuming you have a custom class to target */
-        width: 100%; /* Full width */
-        border-collapse: collapse; /* Collapsed borders for a clean look */
-        margin-top: 1rem; /* Space above the table */
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
     }
 
     .Column {
-        /* Assuming custom classnames for Column */
-        text-align: left; /* Align text to the left for readability */
-        padding: 0.75rem 1rem; /* Padding within cells */
+        text-align: left;
+        padding: 0.75rem 1rem;
     }
 
     /* Media queries for responsiveness */
     @media (min-width: 768px) {
         .min-h-screen {
-            padding: 2rem; /* More padding on larger screens */
+            padding: 2rem;
         }
     }
 </style>

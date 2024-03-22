@@ -16,17 +16,14 @@
             <p class="mt-6 text-lg leading-8 text-gray-300"></p>
             <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
               <a href="/coachEvents" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Olen treener</a>
-              <!-- Dropdown-menüü ainult "Olen sportlane" lingi klõpsamisel -->
+
               <div x-data="{ isOpen: false }" @click.away="isOpen = false" class="relative" x-cloak>
                 <button @click="isOpen = !isOpen" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Olen sportlane
                   <svg class="h-5 w-5 inline-block ml-1" fill="currentColor" viewBox="0 0 20 20" :class="{ 'rotate-180': isOpen }" :aria-expanded="isOpen ? 'true' : 'false'">
-                    <path fill-rule="evenodd" d="M10 12l-8-8-1.5 1.5L10 15l9.5-9.5L18 4"></path>
                   </svg>
                 </button>
                 <div x-show="isOpen" class="absolute z-10 mt-2 w-48 bg-white rounded-md shadow-lg">
-                  <a href="/athleteEvents" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Olen sportlane</a>
-                  <a href="/Inimene1" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Markus </a>
                 </div>
               </div>
             </div>
@@ -38,15 +35,4 @@
       </div>
     </div>
   </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        // Andmepunkt dropdown-menüü avatuse haldamiseks
-        isOpen: false
-      };
-    }
-  };
-  </script>
   

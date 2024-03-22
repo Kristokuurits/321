@@ -7,15 +7,14 @@
 </template>
 
 <style>
-    /* General styles */
     .min-h-screen {
-        background-color: lightblue; /* A softer shade of grey */
-        color: #111827; /* Dark grey for better readability */
+        background-color: lightblue;
+        color: #111827; 
     }
 
 
     .ring {
-        color: lightskyblue;
+        color: rgb(212, 255, 111);
     }
 
         .ring:hover {
@@ -36,87 +35,87 @@
     .details {
         font-weight: bold;
         color: white;
-        background-color: rgb(37, 179, 37);
+        background-color: rgb(149, 225, 238);
         padding: 0.00000005rem 0.5rem;
     }
 
         .details:hover {
             animation: colorchange3 1s infinite;
         }
-    /* Typography and spacing */
+
     h1 {
-        padding: 1rem 0; /* More vertical padding */
-        font-size: 2.25rem; /* Larger size for title */
+        padding: 1rem 0; 
+        font-size: 2.25rem;
         line-height: 2.5rem;
-        margin-bottom: 2rem; /* Space below the title */
+        margin-bottom: 2rem;
     }
 
-    /* Buttons and links */
+
     button, .router-link {
-        padding: 0.5rem 1rem; /* Increased padding for larger clickable area */
-        margin: 0 0.25rem; /* Slight separation between buttons */
-        border: none; /* Remove default borders */
-        font-weight: 600; /* Semi-bold font for better legibility */
-        transition: background-color 0.3s; /* Smooth background transition for hover effect */
+        padding: 0.5rem 1rem; 
+        margin: 0 0.25rem; 
+        border: none; 
+        font-weight: 600; 
+        transition: background-color 0.3s; 
     }
 
         button:hover, .router-link:hover {
-            background-color: darken(bg-color, 10%); /* Darken button on hover for feedback */
+            background-color: darken(bg-color, 10%); 
         }
 
     .popup {
-        /* ... existing styles ... */
-        display: flex; /* Keep this to align the popup */
+
+        display: flex; 
         align-items: center;
         justify-content: center;
-        transition: opacity 0.3s ease-in-out; /* Smooth fade transition */
-        z-index: 100; /* High z-index to ensure visibility above other content */
+        transition: opacity 0.3s ease-in-out; 
+        z-index: 100; 
     }
 
     .popup-inner {
-        background-color: rgb(76, 202, 76); /* White background for the popup */
-        padding: 40px; /* More padding for a spacious look */
-        border-radius: 15px; /* Rounded corners */
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Softer shadow for depth */
-        position: relative; /* For absolute positioning of close button */
-        width: 90%; /* Max width to support responsiveness */
-        max-width: 500px; /* Maximum width of the popup */
-        transition: transform 1.3s ease-in-out; /* Transform transition for a pop effect */
-        transform: scale(1.05); /* Start slightly larger */
+        background-color: rgb(76, 202, 76); 
+        padding: 40px; 
+        border-radius: 15px; 
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        position: relative; 
+        width: 90%;
+        max-width: 500px; 
+        transition: transform 1.3s ease-in-out; 
+        transform: scale(1.05); 
     }
 
         .popup-inner h2 {
-            margin-top: 0; /* Remove margin at the top of the h2 */
-            margin-bottom: 1rem; /* Space below the title */
-            color: #333; /* Dark color for the title */
-            font-size: 1.75rem; /* Larger size for the title */
+            margin-top: 0; 
+            margin-bottom: 1rem; 
+            color: #333; 
+            font-size: 1.75rem; 
         }
 
         .popup-inner ul {
-            list-style: none; /* Remove list styles */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margins for a clean look */
+            list-style: none; 
+            padding: 0; 
+            margin: 0; 
         }
 
             .popup-inner ul li {
-                padding: 0.5rem 0; /* Padding for each list item */
-                border-bottom: 1px solid #eee; /* Separator for items */
+                padding: 0.5rem 0; 
+                border-bottom: 1px solid #eee;
             }
 
                 .popup-inner ul li:last-child {
-                    border-bottom: none; /* No border for the last item */
+                    border-bottom: none; 
                 }
 
     .popupClose {
         position: absolute;
         top: 10px;
         right: 10px;
-        width: 30px; /* Width and height should be the same for a circle */
+        width: 30px; 
         height: 30px;
-        line-height: 30px; /* Line height equal to height to center the text vertically */
-        text-align: center; /* Center the text horizontally */
-        border-radius: 50%; /* Perfect circle */
-        font-size: 16px; /* Adjust the font size as needed */
+        line-height: 30px; 
+        text-align: center; 
+        border-radius: 50%; 
+        font-size: 16px; 
         transition: background-color 0.2s, transform 0.2s;
         cursor: pointer;
         display: flex; /* Use flexbox to center content */
